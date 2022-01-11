@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 
 class AppRoutes {
   static const String initialRoute = '/';
-  static const String social_login = '/home/rebornflorin/TicTac/02_MyFlutterProjects/appx/lib/presentation_layer/social_login.dart';
-  static const String dashboard = '/home/rebornflorin/TicTac/02_MyFlutterProjects/appx/lib/presentation_layer/dashboard.dart';
+  static const String social_login = '/social_login.dart';
+  static const String dashboard = '/dashboard.dart';
 }
 
 class RouteGenerator {

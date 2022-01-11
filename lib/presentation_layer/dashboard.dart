@@ -1,3 +1,4 @@
+import 'package:appx/app.dart';
 import 'package:appx/presentation_layer/post_page.dart';
 import 'package:appx/presentation_layer/reusable_card.dart';
 import 'package:appx/presentation_layer/settings.dart';
@@ -13,6 +14,21 @@ class Dashboard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFFE513333),
+      appBar: AppBar(
+        title: Text('App X'),
+        actions: [
+          IconButton(
+              icon: Icon(AppX.themeNotifier.value == ThemeMode.light
+                  ? Icons.dark_mode
+                  : Icons.light_mode),
+              onPressed: () {
+                AppX.themeNotifier.value =
+                    AppX.themeNotifier.value == ThemeMode.light
+                        ? ThemeMode.dark
+                        : ThemeMode.light;
+              })
+        ],
+      ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [

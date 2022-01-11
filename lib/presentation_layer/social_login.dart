@@ -23,6 +23,29 @@ class SocialLogin extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
+          const TextField(
+            obscureText: true,
+            decoration: InputDecoration(
+              border: OutlineInputBorder(),
+              labelText: 'Username',
+            ),
+          ),
+          const TextField(
+            obscureText: true,
+            decoration: InputDecoration(
+              border: OutlineInputBorder(),
+              labelText: 'Password',
+            ),
+          ),
+          SocialLoginButton(
+            backgroundColor: Colors.amber,
+            height: 50,
+            text: 'SignIn with Email',
+            borderRadius: 20,
+            fontSize: 25,
+            buttonType: SocialLoginButtonType.generalLogin,
+            onPressed: () {},
+          ),
           SocialLoginButton(
             buttonType: SocialLoginButtonType.apple,
             onPressed: () {},
@@ -57,16 +80,6 @@ class SocialLogin extends StatelessWidget {
             buttonType: SocialLoginButtonType.microsoftBlack,
             onPressed: () {},
             imageWidth: 20,
-          ),
-          const SizedBox(height: 10),
-          SocialLoginButton(
-            backgroundColor: Colors.amber,
-            height: 50,
-            text: 'SignIn with Email',
-            borderRadius: 20,
-            fontSize: 25,
-            buttonType: SocialLoginButtonType.generalLogin,
-            onPressed: () {},
           ),
           const SizedBox(height: 10),
         ],
