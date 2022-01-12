@@ -37,6 +37,10 @@ dependencies:
   social_login_buttons: ^1.0.6
   ionicons: ^0.1.2
   material_design_icons_flutter: ^5.0.6595
+  google_sign_in: ^5.2.2
+  firebase_auth: ^3.3.5
+  sqflite: ^2.0.1
+  path_provider: ^2.0.8
 
 dev_dependencies:
   flutter_test:

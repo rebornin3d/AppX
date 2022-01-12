@@ -13,7 +13,7 @@ class ReusableCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: cardChild,
-      height: 80.0,
+      height: 50.0,
       margin: EdgeInsets.all(5.0),
       decoration: BoxDecoration(
           color:Colors.amber,

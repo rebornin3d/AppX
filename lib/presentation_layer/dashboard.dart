@@ -6,6 +6,7 @@ import 'package:appx/presentation_layer/social_login.dart';
 import 'package:flutter/material.dart';
 
 import 'albums.dart';
+import 'notes_saver.dart';
 
 class Dashboard extends StatelessWidget {
   const Dashboard({Key? key}) : super(key: key);
@@ -76,6 +77,23 @@ class Dashboard extends StatelessWidget {
               ),
             ],
           ),
+      GestureDetector(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => SaveNotes()),
+          );
+        },
+        child: ReusableCard(
+          color: Color(0xFFEB1555),
+          cardChild: Center(
+            child: Text(
+              'Notes Saver',
+              style: (TextStyle(fontSize: 35.0)),
+            ),
+          ),
+        ),
+      ),
           SizedBox(
             height: 150.0,
           ),
@@ -96,6 +114,7 @@ class Dashboard extends StatelessWidget {
               ),
             ),
           ),
+
           GestureDetector(
             onTap: () {
               Navigator.push(
