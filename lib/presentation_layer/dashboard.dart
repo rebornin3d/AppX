@@ -6,6 +6,7 @@ import 'package:appx/presentation_layer/social_login.dart';
 import 'package:flutter/material.dart';
 
 import 'albums.dart';
+import 'json_api_screen_1.dart';
 import 'notes_saver.dart';
 
 class Dashboard extends StatelessWidget {
@@ -109,6 +110,23 @@ class Dashboard extends StatelessWidget {
               cardChild: Center(
                 child: Text(
                   'LOGIN',
+                  style: (TextStyle(fontSize: 35.0)),
+                ),
+              ),
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => JsonApi_1()),
+              );
+            },
+            child: ReusableCard(
+              color: Color(0xFFEB1555),
+              cardChild: Center(
+                child: Text(
+                  'JSON API fetch',
                   style: (TextStyle(fontSize: 35.0)),
                 ),
               ),
