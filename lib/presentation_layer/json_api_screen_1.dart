@@ -1,10 +1,8 @@
-
-
 import 'package:appx/data/json_api_1.dart';
 import 'package:flutter/material.dart';
 
-class JsonApi_1 extends StatelessWidget {
-const JsonApi_1({Key? key}) : super(key: key);
+class JsonApi_Photos extends StatelessWidget {
+const JsonApi_Photos({Key? key}) : super(key: key);
 
 @override
 Widget build(BuildContext context) {
@@ -12,7 +10,7 @@ Widget build(BuildContext context) {
 
   return const MaterialApp(
     title: appTitle,
-    home: JsonAPI_HomePage(title: appTitle),
+    home: JsonAPI_Photos_HomePage(title: appTitle),
   );
 }
 }

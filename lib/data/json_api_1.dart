@@ -45,24 +45,8 @@ class Photo {
   }
 }
 
-
-
-// class JsonApi_1 extends StatelessWidget {
-//   const JsonApi_1({Key? key}) : super(key: key);
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     const appTitle = 'Isolate Demo';
-//
-//     return const MaterialApp(
-//       title: appTitle,
-//       home: MyHomePage(title: appTitle),
-//     );
-//   }
-// }
-
-class JsonAPI_HomePage extends StatelessWidget {
-  const JsonAPI_HomePage({Key? key, required this.title}) : super(key: key);
+class JsonAPI_Photos_HomePage extends StatelessWidget {
+  const JsonAPI_Photos_HomePage({Key? key, required this.title}) : super(key: key);
 
   final String title;
 
@@ -112,7 +96,7 @@ class PhotosList extends StatelessWidget {
                 subtitle: Text(photos[index].thumbnailUrl),
                 trailing: Icon(Icons.more_vert),
                 leading: CircleAvatar(
-                     backgroundImage: NetworkImage(photos[index].url),
+                  backgroundImage: NetworkImage(photos[index].url),
                 ),
               );
             }),

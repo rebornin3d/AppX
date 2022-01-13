@@ -1,4 +1,5 @@
 import 'package:appx/app.dart';
+import 'package:appx/data/json_api_todos.dart';
 import 'package:appx/presentation_layer/post_page.dart';
 import 'package:appx/presentation_layer/reusable_card.dart';
 import 'package:appx/presentation_layer/settings.dart';
@@ -119,7 +120,7 @@ class Dashboard extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => JsonApi_1()),
+                MaterialPageRoute(builder: (context) => JsonApi_Photos()),
               );
             },
             child: ReusableCard(
@@ -127,6 +128,23 @@ class Dashboard extends StatelessWidget {
               cardChild: Center(
                 child: Text(
                   'JSON API fetch',
+                  style: (TextStyle(fontSize: 35.0)),
+                ),
+              ),
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => JsonAPI_Todos(title: '',)),
+              );
+            },
+            child: ReusableCard(
+              color: Color(0xFFEB1555),
+              cardChild: Center(
+                child: Text(
+                  'JSON API Todos',
                   style: (TextStyle(fontSize: 35.0)),
                 ),
               ),
