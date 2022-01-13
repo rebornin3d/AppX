@@ -112,7 +112,7 @@ class PhotosList extends StatelessWidget {
                 subtitle: Text(photos[index].thumbnailUrl),
                 trailing: Icon(Icons.more_vert),
                 leading: CircleAvatar(
-                  //   backgroundImage: NetworkImage([index].),
+                     backgroundImage: NetworkImage(photos[index].url),
                 ),
               );
             }),
