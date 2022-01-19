@@ -1,7 +1,7 @@
 
 
 import 'package:appx/presentation_layer/dashboard.dart';
-import 'package:appx/presentation_layer/social_login.dart';
+import 'package:appx/presentation_layer/screens/social_login.dart';
 import 'package:flutter/material.dart';
 
 class AppRoutes {

@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -46,7 +47,8 @@ class Photo {
 }
 
 class JsonAPI_Photos_HomePage extends StatelessWidget {
-  const JsonAPI_Photos_HomePage({Key? key, required this.title}) : super(key: key);
+  const JsonAPI_Photos_HomePage({Key? key, required this.title})
+      : super(key: key);
 
   final String title;
 
@@ -89,17 +91,18 @@ class PhotosList extends StatelessWidget {
       ),
       body: Container(
         child: ListView.builder(
-            itemCount: photos.length,
-            itemBuilder: (context, index) {
-              return ListTile(
-                title: Text(photos[index].title),
-                subtitle: Text(photos[index].thumbnailUrl),
-                trailing: Icon(Icons.more_vert),
-                leading: CircleAvatar(
-                  backgroundImage: NetworkImage(photos[index].url),
-                ),
-              );
-            }),
+          itemCount: photos.length,
+          itemBuilder: (context, index) {
+            return ListTile(
+              title: Text(photos[index].title),
+              subtitle: Text(photos[index].thumbnailUrl),
+              trailing: Icon(Icons.more_vert),
+              leading: CircleAvatar(
+                backgroundImage: NetworkImage(photos[index].url),
+              ),
+            );
+          },
+        ),
       ),
     );
   }

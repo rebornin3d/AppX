@@ -1,14 +1,19 @@
 import 'package:appx/app.dart';
-import 'package:appx/data/json_api_todos.dart';
-import 'package:appx/presentation_layer/post_page.dart';
+import 'package:appx/bloc/forms/dynamic_form/app.dart';
+import 'package:appx/bloc/forms/dynamic_form/new_car_repository.dart';
+import 'package:appx/graph_ql/api/job_api_client.dart';
+import 'package:appx/graph_ql/graphql_page.dart';
 import 'package:appx/presentation_layer/reusable_card.dart';
-import 'package:appx/presentation_layer/settings.dart';
-import 'package:appx/presentation_layer/social_login.dart';
+import 'package:appx/presentation_layer/screens/json/json_api_screen_comments.dart';
+import 'package:appx/presentation_layer/screens/post_page.dart';
+import 'package:appx/presentation_layer/screens/settings.dart';
+import 'package:appx/presentation_layer/screens/social_login.dart';
 import 'package:flutter/material.dart';
 
-import 'albums.dart';
-import 'json_api_screen_1.dart';
-import 'notes_saver.dart';
+import 'screens/albums.dart';
+import 'screens/json/json_api_screen_photos.dart';
+import 'screens/json/json_api_screen_todos.dart';
+import 'screens/notes_saver.dart';
 
 class Dashboard extends StatelessWidget {
   const Dashboard({Key? key}) : super(key: key);
@@ -21,22 +26,23 @@ class Dashboard extends StatelessWidget {
         title: Text('App X'),
         actions: [
           IconButton(
-              icon: Icon(AppX.themeNotifier.value == ThemeMode.light
-                  ? Icons.dark_mode
-                  : Icons.light_mode),
-              onPressed: () {
-                AppX.themeNotifier.value =
-                    AppX.themeNotifier.value == ThemeMode.light
-                        ? ThemeMode.dark
-                        : ThemeMode.light;
-              })
+            icon: Icon(AppX.themeNotifier.value == ThemeMode.light
+                ? Icons.dark_mode
+                : Icons.light_mode),
+            onPressed: () {
+              AppX.themeNotifier.value =
+                  AppX.themeNotifier.value == ThemeMode.light
+                      ? ThemeMode.dark
+                      : ThemeMode.light;
+            },
+          ),
         ],
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           SizedBox(
-            height: 150.0,
+            height: 50.0,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -54,7 +60,7 @@ class Dashboard extends StatelessWidget {
                     cardChild: Center(
                         child: Text(
                       'Post',
-                      style: (TextStyle(fontSize: 35.0)),
+                      style: (TextStyle(fontSize: 25.0)),
                     )),
                   ),
                 ),
@@ -70,34 +76,70 @@ class Dashboard extends StatelessWidget {
                   child: ReusableCard(
                     color: Color(0xFFEB1555),
                     cardChild: Center(
-                        child: Text(
-                      'My Albums',
-                      style: (TextStyle(fontSize: 35.0)),
-                    )),
+                      child: Text(
+                        'My Albums',
+                        style: (TextStyle(fontSize: 25.0)),
+                      ),
+                    ),
                   ),
                 ),
               ),
             ],
           ),
-      GestureDetector(
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => SaveNotes()),
-          );
-        },
-        child: ReusableCard(
-          color: Color(0xFFEB1555),
-          cardChild: Center(
-            child: Text(
-              'Notes Saver',
-              style: (TextStyle(fontSize: 35.0)),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => SaveNotes()),
+              );
+            },
+            child: ReusableCard(
+              color: Color(0xFFEB1555),
+              cardChild: Center(
+                child: Text(
+                  'Notes Saver',
+                  style: (TextStyle(fontSize: 25.0)),
+                ),
+              ),
             ),
           ),
-        ),
-      ),
-          SizedBox(
-            height: 150.0,
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) =>
+                        GraphQL_Page(jobsApiClient: JobsApiClient.create())),
+              );
+            },
+            child: ReusableCard(
+              color: Color(0xFFEB1555),
+              cardChild: Center(
+                child: Text(
+                  'GraphQL',
+                  style: (TextStyle(fontSize: 25.0)),
+                ),
+              ),
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => Dynamic_Form_Page(
+                        newCarRepository: NewCarRepository())),
+              );
+            },
+            child: ReusableCard(
+              color: Color(0xFFEB1555),
+              cardChild: Center(
+                child: Text(
+                  'Dymamic Form',
+                  style: (TextStyle(fontSize: 25.0)),
+                ),
+              ),
+            ),
           ),
           GestureDetector(
             onTap: () {
@@ -111,7 +153,7 @@ class Dashboard extends StatelessWidget {
               cardChild: Center(
                 child: Text(
                   'LOGIN',
-                  style: (TextStyle(fontSize: 35.0)),
+                  style: (TextStyle(fontSize: 25.0)),
                 ),
               ),
             ),
@@ -127,8 +169,8 @@ class Dashboard extends StatelessWidget {
               color: Color(0xFFEB1555),
               cardChild: Center(
                 child: Text(
-                  'JSON API fetch',
-                  style: (TextStyle(fontSize: 35.0)),
+                  'JSON API Photos',
+                  style: (TextStyle(fontSize: 25.0)),
                 ),
               ),
             ),
@@ -137,20 +179,40 @@ class Dashboard extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => JsonAPI_Todos(title: '',)),
+                MaterialPageRoute(
+                  builder: (context) => JsonAPI_Todos(),
+                ),
               );
             },
             child: ReusableCard(
               color: Color(0xFFEB1555),
               cardChild: Center(
                 child: Text(
-                  'JSON API Todos',
-                  style: (TextStyle(fontSize: 35.0)),
+                  'JsonAPI_Todos',
+                  style: (TextStyle(fontSize: 25.0)),
                 ),
               ),
             ),
           ),
-
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => JsonApi_Comments(),
+                ),
+              );
+            },
+            child: ReusableCard(
+              color: Color(0xFFEB1555),
+              cardChild: Center(
+                child: Text(
+                  'JsonAPI_Comments',
+                  style: (TextStyle(fontSize: 25.0)),
+                ),
+              ),
+            ),
+          ),
           GestureDetector(
             onTap: () {
               Navigator.push(
@@ -163,7 +225,7 @@ class Dashboard extends StatelessWidget {
               cardChild: Center(
                 child: Text(
                   'Settings',
-                  style: (TextStyle(fontSize: 35.0)),
+                  style: (TextStyle(fontSize: 25.0)),
                 ),
               ),
             ),

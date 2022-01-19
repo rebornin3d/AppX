@@ -2,11 +2,11 @@
 
 import 'dart:io';
 import 'package:path/path.dart';
-import 'package:appx/presentation_layer/notes_saver.dart';
+import 'package:appx/presentation_layer/screens/notes_saver.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
 
-import 'grocery.dart';
+import 'note.dart';
 
 class DatabaseHelper {
   DatabaseHelper._privateConstructor();
@@ -36,16 +36,16 @@ class DatabaseHelper {
       ''');
   }
 
-  Future<List<Grocery>> getGroceries() async {
+  Future<List<Note>> getGroceries() async {
     Database db = await instance.database;
     var groceries = await db.query('groceries', orderBy: 'name');
-    List<Grocery> groceryList = groceries.isNotEmpty
-        ? groceries.map((c) => Grocery.fromMap(c)).toList()
+    List<Note> groceryList = groceries.isNotEmpty
+        ? groceries.map((c) => Note.fromMap(c)).toList()
         : [];
     return groceryList;
   }
 
-  Future<int> add(Grocery grocery) async {
+  Future<int> add(Note grocery) async {
     Database db = await instance.database;
     return await db.insert('groceries', grocery.toMap());
   }
@@ -55,7 +55,7 @@ class DatabaseHelper {
     return await db.delete('groceries', where: 'id = ?', whereArgs: [id]);
   }
 
-  Future<int> update(Grocery grocery) async {
+  Future<int> update(Note grocery) async {
     Database db = await instance.database;
     return await db.update('groceries', grocery.toMap(),
         where: "id = ?", whereArgs: [grocery.id]);

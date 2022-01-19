@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:convert';
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -33,7 +32,7 @@ class Todo {
 
   factory Todo.fromJson(Map<String, dynamic> json) {
     return Todo(
-      userId: json['albumId'] as int,
+      userId: json['userId'] as int,
       id: json['id'] as int,
       title: json['title'] as String,
       completed: json['completed'] as bool,
@@ -42,22 +41,8 @@ class Todo {
 }
 
 
-
-class JsonAPI_Todos extends StatelessWidget {
-  const JsonAPI_Todos({Key? key, required this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: JsonAPI_HomePage(),
-    );
-  }
-}
-
 class JsonAPI_HomePage extends StatelessWidget {
-  const JsonAPI_HomePage({Key? key}) : super(key: key);
+  const JsonAPI_HomePage({Key? key, required String title}) : super(key: key);
 
   final String title = 'Todos List';
 
@@ -71,9 +56,9 @@ class JsonAPI_HomePage extends StatelessWidget {
         future: fetchTodos(http.Client()),
         builder: (context, snapshot) {
           if (snapshot.hasError) {
-            print('error is :  ${snapshot}');
+            print('errrrrror is :  $snapshot');
             return const Center(
-              child: Text('An error has occured!'),
+              child: Text("An error has occured!"),
             );
           } else if (snapshot.hasData) {
             return TodosList(todos: snapshot.data!);
@@ -97,19 +82,20 @@ class TodosList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Todos'),
+        title: const Text('Todos'),
       ),
-      body: Container(
-        child: ListView.builder(
-            itemCount: todos.length,
-            itemBuilder: (context, index) {
-              return ListTile(
-                title: Text(todos[index].userId.toString()),
-                subtitle: Text(todos[index].id.toString()),
-                leading: CircleAvatar(),
-              );
-            }),
-      ),
+      body: ListView.builder(
+          itemCount: todos.length,
+          itemBuilder: (context, index) {
+            return ListTile(
+              title: Text(todos[index].userId.toString()),
+              subtitle: Text(todos[index].id.toString()),
+              trailing: const Icon(Icons.more_rounded),
+              leading: CircleAvatar(
+                backgroundImage: NetworkImage(todos[index].title),
+              ),
+            );
+          }),
     );
   }
 }

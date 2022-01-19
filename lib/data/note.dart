@@ -1,16 +1,16 @@
 import 'dart:io';
 import 'package:path/path.dart';
-import 'package:appx/presentation_layer/notes_saver.dart';
+import 'package:appx/presentation_layer/screens/notes_saver.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
 
-class Grocery {
+class Note {
   final int? id;
   final String name;
 
-  Grocery({this.id, required this.name});
+  Note({this.id, required this.name});
 
-  factory Grocery.fromMap(Map<String, dynamic> json) => new Grocery(
+  factory Note.fromMap(Map<String, dynamic> json) => new Note(
     id: json['id'],
     name: json['name'],
   );

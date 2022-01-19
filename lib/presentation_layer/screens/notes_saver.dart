@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:appx/data/database_helper.dart';
-import 'package:appx/data/grocery.dart';
+import 'package:appx/data/note.dart';
 import 'package:flutter/material.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
@@ -28,15 +28,15 @@ class _SaveNotesState extends State<SaveNotes> {
           ),
         ),
         body: Center(
-          child: FutureBuilder<List<Grocery>>(
+          child: FutureBuilder<List<Note>>(
               future: DatabaseHelper.instance.getGroceries(),
               builder: (BuildContext context,
-                  AsyncSnapshot<List<Grocery>> snapshot) {
+                  AsyncSnapshot<List<Note>> snapshot) {
                 if (!snapshot.hasData) {
                   return Center(child: Text('Loading...'));
                 }
                 return snapshot.data!.isEmpty
-                    ? Center(child: Text('No Groceries in List.'))
+                    ? Center(child: Text('No notes in List.'))
                     : ListView(
                         children: snapshot.data!.map((grocery) {
                           return Center(
@@ -74,10 +74,10 @@ class _SaveNotesState extends State<SaveNotes> {
           onPressed: () async {
             selectedId != null
                 ? await DatabaseHelper.instance.update(
-                    Grocery(id: selectedId, name: textController.text),
+                    Note(id: selectedId, name: textController.text),
                   )
                 : await DatabaseHelper.instance.add(
-                    Grocery(name: textController.text),
+                    Note(name: textController.text),
                   );
             setState(() {
               textController.clear();

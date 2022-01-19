@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 
-import 'reusable_list_tile.dart';
+import '../reusable_list_tile.dart';
 
 class Settings extends StatefulWidget {
   @override
