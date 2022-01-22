@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "685335055832",
+    "project_id": "appx-7c889",
+    "storage_bucket": "appx-7c889.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:685335055832:android:8c5facd0f11b4d2a69b6ad",
+        "android_client_info": {
+          "package_name": "com.rebornin3d.AppX"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "685335055832-gi6roui4b42gk6g328hdej0emekffpdq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDSsO7fQmUjaPFCb29so8Gz-MQVa_nxmUk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "685335055832-gi6roui4b42gk6g328hdej0emekffpdq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
